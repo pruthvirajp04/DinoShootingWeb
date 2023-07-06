@@ -1,0 +1,27 @@
+[
+    {
+        "monsterName":"普通小怪",
+        "monsterBasicHp":30,
+        "monsterBasicDamage":5
+    },
+    {
+        "monsterName":"盾牌小怪",
+        "monsterBasicHp":80,
+        "monsterBasicDamage":10
+    },
+    {
+        "monsterName":"伞兵小怪",
+        "monsterBasicHp":50,
+        "monsterBasicDamage":8
+    },
+    {
+        "monsterName":"霸王龙",
+        "monsterBasicHp":8000,
+        "monsterBasicDamage":9999999
+    },
+    {
+        "monsterName":"僵尸王",
+        "monsterBasicHp":10000,
+        "monsterBasicDamage":9999999
+    }
+]

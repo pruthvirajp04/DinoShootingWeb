@@ -1,0 +1,17 @@
+[
+    {
+        "getDiamond":100,
+        "newUserDiamond":50,
+        "playerBasicHp":150,
+        "singleMonsterBornTime":[0,1],
+        "wellenMonsterBornTime":[1,2],
+        "behaviorRandomTime":[1,2],
+        "behaviorTime":[0.1,1],
+        "monsterHpFilter":10,
+        "monsterDamageFilter":10,
+        "playerHpFilter":10,
+        "hpTrigger":0.5,
+        "playerDamageStrengthen":5,
+      	"playerDamageStrengthenTime":10
+    }
+]
