@@ -7088,6 +7088,7 @@ exports.default = MainView;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ViewBase_1 = require("../ViewBase");
+var ViewMgr_1 = require("../../Mgr/ViewMgr");
 var LoopAdView_1 = require("../../ShareAd/View/LoopAdView");
 var AppSwitchConfig_1 = require("../../Config/AppSwitchConfig");
 var MoreGameView = /** @class */ (function (_super) {
@@ -7096,6 +7097,7 @@ var MoreGameView = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this._loopAd = null;
         _this._continueBtn = null;
+        _this._homeBtn = null;
         return _this;
     }
     MoreGameView.prototype.onAwake = function () {
@@ -7103,16 +7105,19 @@ var MoreGameView = /** @class */ (function (_super) {
         this._loopAd = this.owner.getChildByName("TopZone").getChildByName("LoopAD").getComponent(LoopAdView_1.default);
         this._loopAd.AdPos_JDKL_ID = 193;
         this._continueBtn = this.owner.getChildByName("TopZone").getChildByName("ContinueBtn");
+        this._homeBtn = this.owner.getChildByName("TopZone").getChildByName("HomeBtn");
     };
     MoreGameView.prototype.open_JDKL_View = function (data) {
         _super.prototype.open_JDKL_View.call(this, data);
         if (null != data && data.showContinue) {
             this._closeBtn.visible = false;
             this._continueBtn.visible = false;
+            this._homeBtn.visible = false;
             var self = this;
             var time = AppSwitchConfig_1.default.get_JDKL_Instance().getApp_JDKL_SwitchData().btnDelayTime * 1000;
             Laya.timer.once(time, this, function () {
                 self._continueBtn.visible = true;
+                self._homeBtn.visible = true;
             });
         }
         else {
@@ -7123,20 +7128,26 @@ var MoreGameView = /** @class */ (function (_super) {
     MoreGameView.prototype.add_JDKL_Event = function () {
         this._closeBtn.on(Laya.Event.CLICK, this, this.close_JDKL_View);
         this._continueBtn.on(Laya.Event.CLICK, this, this.onContinueBtn);
+        this._homeBtn.on(Laya.Event.CLICK,this,this.onHomeBtn);
     };
     MoreGameView.prototype.remove_JDKL_Event = function () {
         this._closeBtn.off(Laya.Event.CLICK, this, this.close_JDKL_View);
         this._continueBtn.off(Laya.Event.CLICK, this, this.onContinueBtn);
+        this._homeBtn.off(Laya.Event.CLICK,this,this.onHomeBtn);
     };
     MoreGameView.prototype.onContinueBtn = function () {
         if (this._data && this._data.onContinue) {
             this._data.onContinue();
         }
     };
+    MoreGameView.prototype.onHomeBtn = function () {
+        var self = this;
+        ViewMgr_1.default.instance.open_JDKL_View(ViewMgr_1.View_JDKL_Def.Main_JDKL_View, {}, function (v) { self.close_JDKL_View(); });
+    };
     return MoreGameView;
 }(ViewBase_1.default));
 exports.default = MoreGameView;
-},{"../../Config/AppSwitchConfig":4,"../../ShareAd/View/LoopAdView":54,"../ViewBase":84}],76:[function(require,module,exports){
+},{"../../Config/AppSwitchConfig":4,"../../Mgr/ViewMgr":41,"../../ShareAd/View/LoopAdView":54,"../ViewBase":84}],76:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ViewBase_1 = require("../ViewBase");
