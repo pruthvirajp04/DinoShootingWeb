@@ -6908,7 +6908,7 @@ var LevelBox = /** @class */ (function (_super) {
         this._bossIcon.loadImage("res/boss/" + data.bossIcon + ".png", Laya.Handler.create(this, function () {
             self._bossIcon.visible = true;
         }));
-        this._levelNumText.text = "第" + data.levelId + "关";
+        this._levelNumText.text = "";
     };
     return LevelBox;
 }(Laya.Script));
